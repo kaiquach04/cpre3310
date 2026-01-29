@@ -1,3 +1,6 @@
+# lab01_part01.py by Kai Quach
+# 01/29/26
+
 def modify(sentence: list[str], shift: int) -> str:
     result = []
     for char in sentence:
