@@ -4,7 +4,7 @@
 
 def frequency(inputs: list[list[str]], character: str) -> None:
     count = 0
-    list_count = 0
+    list_count = 0 # keeps track of current list index
     for nested_list in inputs: # a nested loop since its a list within a list
         count = 0
         for char in nested_list: # looking at one of the 3 lists, and starts iterating through the chars
