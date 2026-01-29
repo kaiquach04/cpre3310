@@ -3,12 +3,12 @@
 
 def modify(sentence: list[str], shift: int) -> str:
     result = []
-    for char in sentence:
+    for char in sentence: # loops through each character in the sentence
         upperCase = char.upper()
         ascii = ord(upperCase)
-        indexVal = ascii - 65
+        indexVal = ascii - 65 # convert to 0-25 index
         newPos = (indexVal + shift) % 26 # The wording threw me off but im assuming technically the shift value should be pos mathematically but result in negative (go left)
-        shiftedChar = chr(newPos + 65)
+        shiftedChar = chr(newPos + 65) # convert back to char (along with shifting back to ascii value)
         result.append(shiftedChar)
     return ''.join(result)
 
