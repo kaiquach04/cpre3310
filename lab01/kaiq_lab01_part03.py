@@ -8,18 +8,16 @@ def readFile(filename: str) -> str:
         return file.read()
     
 def analyze(ciphertext: str) -> None:
+    # Uppercase for ASCII
     upperCase = ciphertext.upper()
 
-    for shift in range(26):
-        result = []
+    for shift in range(26): # All possible shift values
+        result = [] # Starts / resets the results
 
         for char in upperCase:
-            if "A" <= char <= "Z":
-                index = ord(char) - 65
-                new_idx = (index - shift) % 26
-                result.append(chr(new_idx + 65))
-            else:
-                result.append(char)
+            index = ord(char) - 65
+            new_idx = (index + shift) % 26 # mathematically shifts to the right
+            result.append(chr(new_idx + 65))
 
         testCipherStr = ''.join(result)
         print(f"Testing shift by {shift}:\n{testCipherStr}\n")
