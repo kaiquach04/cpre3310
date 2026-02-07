@@ -1,6 +1,6 @@
 # 3310 Lab 02
 # Part 01
-# 2/3/26 - Rauer
+# 2/5/26 - Kai Quach
 
 # Depending upon the number of arguments on the command line this program
 # conduct frequency analysis or help test a potential key (alphabet).
@@ -35,17 +35,11 @@ def countChars(cipherText: str) -> int:
 #   Returns a dictionary with characters as the keys and num of occurences as the values.
 def frequency(cipherText: str) -> dict:
     freq = {} 
-    # TODO:
-    # Loop through the ciphertext.
-    # Learning about .get() will be helpful for this next part.
-    #   Add the character to the freq dictionary if it isn't in there yet.
-    #   Increase the value of the character every time it occurs.
     for char in cipherText:
-	if freq.get(char) == None:
-	  freq[char] = 1
-	else:
-	  print(f"{char} already present")
-	  freq[char] += 1
+        if freq.get(char) == None: # If char does not exist in dictionary then add it
+            freq[char] = 1
+        else: # if it already exists, add another count to it.
+            freq[char] += 1
 	  
     return freq
     
@@ -65,8 +59,12 @@ def freqAnalysis(cipherText: str) -> list:
     # This should go after count in the square brackets below
     # freqList will be a list of lists, where each inner list is for a character
     # Each character should have a list with format: [character, number, percentage]
-    
-    freqList = freqList = [[char, count, ] for char, count in freq.items()]
+    freqList = []
+    for char in freq: # loops thru the freq we've done previously then work on converting into percentage and putting all values together
+        count = freq[char]
+        percent = (count / totalChars) * 100
+        freqList.append([char, count, percent])
+    # freqList = freqList = [[char, count, percentage] for char, count, percentage in freq.items()]
     freqList.sort(key=lambda x: x[2], reverse=True) # This sorts the list
     return freqList
     
